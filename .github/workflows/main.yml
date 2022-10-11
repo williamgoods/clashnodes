@@ -1,6 +1,11 @@
 name: Gradle CI
 
-on: [push]
+on:
+  push:
+  schedule:
+    - cron: '0 21 * * *'
+    - cron: '0 1 * * *'
+    - cron: '0 6 * * *'
 
 jobs:
   build:
