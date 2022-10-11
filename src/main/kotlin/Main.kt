@@ -1,4 +1,6 @@
 import org.jsoup.Jsoup
+import java.io.File
+import java.lang.reflect.Field
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -7,6 +9,7 @@ import kotlin.io.path.deleteExisting
 
 fun downloadFile(url: String, fileName: String) {
     val download = URL(url)
+    File(fileName).createNewFile()
     download.openStream().use { Files.copy(it, Paths.get(fileName)) }
 }
 
