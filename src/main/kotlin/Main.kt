@@ -9,7 +9,6 @@ import kotlin.io.path.deleteExisting
 
 fun downloadFile(url: String, fileName: String) {
     val download = URL(url)
-    File(fileName).createNewFile()
     download.openStream().use { Files.copy(it, Paths.get(fileName)) }
 }
 
