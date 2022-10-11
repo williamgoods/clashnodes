@@ -1,0 +1,29 @@
+import org.jsoup.Jsoup
+import java.net.URL
+import java.nio.file.Files
+import java.nio.file.Paths
+
+fun downloadFile(url: String, fileName: String) {
+    val download = URL(url)
+    download.openStream().use { Files.copy(it, Paths.get(fileName)) }
+}
+
+fun main(args: Array<String>) {
+    val home =
+        Jsoup.connect("https://clashnode.com/f/freenode")
+            .timeout(0)
+            .get()
+
+    val list = home.getElementsByClass("post-list").get(0)
+    val elem = list.getElementsByTag("li").get(0)
+    val link = elem.getElementsByTag("a").get(0).attr("href")
+
+    val nodes = Jsoup.connect(link).get()
+    val ps = nodes.getElementsByTag("p")
+    val clashnodes = ps.get(10).text()
+
+    val currentPath = Paths.get(System.getProperty("user.dir"))
+    val file = Paths.get(currentPath.toString(), "clashnodes.yaml").toString()
+
+    downloadFile(clashnodes, file)
+}
