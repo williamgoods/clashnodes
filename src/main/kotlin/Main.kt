@@ -2,6 +2,8 @@ import org.jsoup.Jsoup
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Paths
+import kotlin.io.path.Path
+import kotlin.io.path.deleteExisting
 
 fun downloadFile(url: String, fileName: String) {
     val download = URL(url)
@@ -25,5 +27,6 @@ fun main(args: Array<String>) {
     val currentPath = Paths.get(System.getProperty("user.dir"))
     val file = Paths.get(currentPath.toString(), "clashnodes.yaml").toString()
 
+    Path(file).deleteExisting()
     downloadFile(clashnodes, file)
 }
