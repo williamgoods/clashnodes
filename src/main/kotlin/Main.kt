@@ -32,6 +32,6 @@ fun main(args: Array<String>) {
 //            "/clashnodes-" + currenttime + ".yaml"
     val filepath = currentPath.toString() + "/clashnodes.yaml"
 
-    // Path(filepath).deleteExisting()
+    Path(filepath).deleteExisting()
     downloadFile(clashnodes, filepath)
 }
