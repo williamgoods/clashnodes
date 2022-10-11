@@ -28,8 +28,9 @@ fun main(args: Array<String>) {
     val currenttime = System.currentTimeMillis().toString()
 
     val currentPath = Paths.get(System.getProperty("user.dir"))
-    val filepath = currentPath.toString() +
-            "/clashnodes-" + currenttime + ".yaml"
+//    val filepath = currentPath.toString() +
+//            "/clashnodes-" + currenttime + ".yaml"
+    val filepath = currentPath.toString() + "/clashnodes.yaml"
 
     // Path(filepath).deleteExisting()
     downloadFile(clashnodes, filepath)
