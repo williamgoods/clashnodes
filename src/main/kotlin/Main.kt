@@ -25,7 +25,7 @@ fun main(args: Array<String>) {
     val nodes = Jsoup.connect(link).get()
     val ps = nodes.getElementsByTag("p")
     val clashnodes = ps.get(10).text()
-    val currenttime = System.currentTimeMillis().toString()
+//    val currenttime = System.currentTimeMillis().toString()
 
     val currentPath = Paths.get(System.getProperty("user.dir"))
 //    val filepath = currentPath.toString() +
